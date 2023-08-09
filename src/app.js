@@ -10,7 +10,19 @@ const { User } = require("../models")
 const application = express();
 const PORT = process.env.PORT || 5001;
 
-application.use(cors());
+// CORS Configuration
+const whitelist = ['https://innovtask.com'];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+application.use(cors(corsOptions));
 application.use(express.json());
 
 // Get the appropriate configuration based on your environment
