@@ -6,7 +6,6 @@ const { setupMiddlewares } = require('./middlewares');
 const application = express();
 const PORT = process.env.PORT || 5001;
 
-// // Initialize env before using i
 setupMiddlewares(application);
 application.use(express.json());
 
