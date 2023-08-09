@@ -20,7 +20,8 @@
     "dev": "nodemon src/app.js",
     "migrate": "npx sequelize-cli db:migrate",
     "seed:all": "sequelize-cli db:seed:all",
-    "deploy": "git push heroku main"
+    "deploy": "git push heroku main",
+    "push:deploy": "git push && yarn deploy"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
