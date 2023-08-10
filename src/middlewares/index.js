@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const authenticateJWT = require("./authenticateJWT");
 
 const env = process.env.NODE_ENV || "development";
 const whitelist = ["https://innovtask.com"];
@@ -25,4 +26,5 @@ function setupMiddlewares(app) {
 
 module.exports = {
   setupMiddlewares,
+  authenticateJWT
 };
