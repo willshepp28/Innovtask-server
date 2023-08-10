@@ -1,7 +1,6 @@
 {
-    "watch": ["src"],
-    "ext": "js",
-    "ignore": ["src/tests"],
-    "exec": "node src/app.js"
-  }
-  
+  "watch": ["src"],
+  "ext": "js",
+  "ignore": ["src/tests"],
+  "exec": "node src/app.js"
+}

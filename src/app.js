@@ -1,7 +1,7 @@
-require('dotenv').config();
-const express = require('express');
-const { setupMiddlewares } = require('./middlewares');
-const { setupRoutes } = require('./routes');
+require("dotenv").config();
+const express = require("express");
+const { setupMiddlewares } = require("./middlewares");
+const { setupRoutes } = require("./routes");
 
 const application = express();
 const PORT = process.env.PORT || 5001;

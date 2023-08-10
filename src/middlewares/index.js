@@ -1,20 +1,20 @@
-const express = require('express');
-const cors = require('cors');
+const express = require("express");
+const cors = require("cors");
 
-const env = process.env.NODE_ENV || 'development';
-const whitelist = ['https://innovtask.com'];
+const env = process.env.NODE_ENV || "development";
+const whitelist = ["https://innovtask.com"];
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
-      callback(null, true)
+      callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'))
+      callback(new Error("Not allowed by CORS"));
     }
-  }
-}
+  },
+};
 
 function setupMiddlewares(app) {
-  if (env === 'production') {
+  if (env === "production") {
     app.use(cors(corsOptions));
   } else {
     app.use(cors());
@@ -24,5 +24,5 @@ function setupMiddlewares(app) {
 }
 
 module.exports = {
-  setupMiddlewares
+  setupMiddlewares,
 };
