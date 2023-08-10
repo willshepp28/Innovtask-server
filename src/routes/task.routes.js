@@ -8,9 +8,10 @@ const router = express.Router();
 router.get("/", authenticateJWT, async (request, response) => {
   const userId = request.user.id;
 
-  const tasks = Task.findAll({ 
+  const tasks = await Task.findAll({ 
     where: { userId: userId }
   });
+
 
   response.status(200).json(tasks);
 });
@@ -25,7 +26,7 @@ router.post("/", authenticateJWT, async(request, response) => {
       description,
       priority,
       userId
-    })
+    });
 
     response.status(401).json(newTask);
   } catch(error) {
