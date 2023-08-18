@@ -1,48 +1,46 @@
-'use strict';
+"use strict";
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Subtasks', {
+    await queryInterface.createTable("Subtasks", {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
       },
       title: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
-      description: {
-        type: Sequelize.TEXT
-      },
-      isComplete: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
-        allowNull: false
+      status: {
+        type: Sequelize.ENUM("Incomplete", "Complete"),
+        defaultValue: "Incomplete",
       },
       taskId: {
         type: Sequelize.UUID,
         allowNull: false,
         references: {
-          model: 'Tasks',
-          key: 'id'       
+          model: "Tasks",
+          key: "id",
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE'
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("NOW()"),
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("NOW()"),
+      },
     });
   },
 
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Subtasks');
-  }
+  down: async (queryInterface, _Sequelize) => {
+    await queryInterface.dropTable("Subtasks");
+  },
 };

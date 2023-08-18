@@ -26,5 +26,5 @@ function setupMiddlewares(app) {
 
 module.exports = {
   setupMiddlewares,
-  authenticateJWT
+  authenticateJWT,
 };
